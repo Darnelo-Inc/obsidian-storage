@@ -1,5 +1,3 @@
-
-
 tsc
 ts-node
   
