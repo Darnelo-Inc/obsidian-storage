@@ -12,7 +12,7 @@
 ---
 ## Базовый синтаксис
 
-`sudo tcpdump [опции] [фильтр]`
+`tcpdump [опции] [фильтр]`
 
 *Обычно нужны права root или sudo для прямого доступа к сетевым интерфейсам.*
 
@@ -21,31 +21,31 @@
 
 ### Захват пакетов с интерфейса eth0
 
-`sudo tcpdump -i eth0`
+`tcpdump -i eth0`
 
 ### Смотреть только HTTP (порт 80)
 
-`sudo tcpdump -i eth0 port 80`
+`tcpdump -i eth0 port 80`
 
 ### Смотреть только исходящий трафик:
 
-`sudo tcpdump -i eth0 outbound`
+`tcpdump -i eth0 outbound`
 
 ### Смотреть только ICMP (ping)
 
-`sudo tcpdump icmp`
+`tcpdump icmp`
 
 ### Фильтрация по IP-адресу
 
-`sudo tcpdump host 192.168.1.10`
+`tcpdump host 192.168.1.10`
 
 ### Фильтрация по протоколу и порту (например, UDP/53 — DNS)
 
-`sudo tcpdump udp port 53`
+`tcpdump udp port 53`
 
 ### Сохранять трафик в файл для анализа (например, в Wireshark)
 
-`sudo tcpdump -i eth0 -w traffic.pcap`
+`tcpdump -i eth0 -w traffic.pcap`
 
 ### Читать сохранённый дамп:
 
