@@ -142,5 +142,8 @@ CHAIN DOCKER-ISOLATION-STAGE-(1|2) - двухшаговый механизм, н
 15. Прописываем форвардинг на входящий трафик
 `nft add rule ip filter FORWARD iifname "eth0" oifname "dikiy-ogurec" ct state new,related,established accept`
 
-16. Пробросим порты
-`nft add rule ip nat OUTPUT tcp dport 6666 counter dnat to 172.31.0.2:1337`
+16. Пробросим порты, исключив из dnat localhost
+`nft add rule ip nat OUTPUT ip daddr != 127.0.0.0/8 tcp dport 6666 counter dnat to 172.31.0.2:1337`
+
+17. Поддержим обработку пакетов в localhost
+`socat TCP-LISTEN:6666,bind=127.0.0.1,reuseaddr,fork TCP:172.31.0.2:1337 &`
